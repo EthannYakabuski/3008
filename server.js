@@ -25,15 +25,10 @@ app.set('view engine', 'pug');
 //connect to the database
 /*
 var db; 
-
 mongo.connect("mongodb://localhost:27017/3008DB", function(err, database) {
-
 	if(err) throw err; 
-
         db = database; 
-
         app.listen(3008, function() {console.log("server listening on port 3008");});
-
 });
 */
 
@@ -59,4 +54,3 @@ app.listen(port, (err) => {
 	
 	console.log("Server listening on port: " + port)
 })
-
