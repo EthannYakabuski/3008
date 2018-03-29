@@ -1,0 +1,28 @@
+{
+  "name": "3008",
+  "version": "1.0.0",
+  "description": "Website used for COMP3008 project2",
+  "main": "server.js",
+  "dependencies": {
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.3",
+    "http": "^0.0.0",
+    "mongodb": "^3.0.5",
+    "pug": "^2.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EthannYakabuski/3008.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EthannYakabuski/3008/issues"
+  },
+  "homepage": "https://github.com/EthannYakabuski/3008#readme"
+}
