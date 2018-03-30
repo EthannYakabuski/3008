@@ -1,10 +1,12 @@
 var char = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 var num = '0123456789';
 var sym = '!@#$%^&*=-_';
+var img = 'car.gif';
 
 var charNum = document.getElementById("charNum");
 var numBox = document.getElementById("num");
 var symBox = document.getElementById("sym");
+var imgBox = document.getElementById("img");
 var submit1 = document.getElementById("submit1");
 var submit2 = document.getElementById("submit2");
 var submit3 = document.getElementById("submit3");
@@ -16,6 +18,7 @@ submit1.addEventListener("click",function(e){
     var characters = char;
     (numBox.checked) ? characters += num : '';
     (symBox.checked) ? characters += sym : '';
+	(imgBox.checked) ? characters += img : '';
     yourPw1.value = password(charNum.value, characters);
 });
 
@@ -23,6 +26,7 @@ submit2.addEventListener("click",function(e){
     var characters = char;
     (numBox.checked) ? characters += num : '';
     (symBox.checked) ? characters += sym : '';
+	(imgBox.checked) ? characters += img : '';
     yourPw2.value = password(charNum.value, characters);
 });
 
@@ -30,6 +34,7 @@ submit3.addEventListener("click",function(e){
     var characters = char;
     (numBox.checked) ? characters += num : '';
     (symBox.checked) ? characters += sym : '';
+	(imgBox.checked) ? characters += img : '';
     yourPw3.value = password(charNum.value, characters);
 });
 
