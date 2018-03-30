@@ -2,7 +2,10 @@ var char = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 var num = '0123456789';
 var sym = '!@#$%^&*=-_';
 var img = 'car.gif';
+
+
 var pictures = ["Man", "Dog", "Car", "Woman", "Ball", "Apple"];
+var picturesSize = 6;
 
 var picturePasswords = [0, 0, 0];
 var picturePasswordCycler = 0;
@@ -30,7 +33,7 @@ submit1.addEventListener("click",function(e){
     (symBox.checked) ? characters += sym : '';
 	(imgBox.checked) ? characters += img : '';
     yourPw1.value = password(charNum.value, characters);
-	
+	yourPwImage1.src = choosePictureLocation();
 });
 
 submit2.addEventListener("click",function(e){
@@ -39,6 +42,7 @@ submit2.addEventListener("click",function(e){
     (symBox.checked) ? characters += sym : '';
 	(imgBox.checked) ? characters += img : '';
     yourPw2.value = password(charNum.value, characters);
+	yourPwImage2.src = choosePictureLocation();
 });
 
 submit3.addEventListener("click",function(e){
@@ -47,6 +51,7 @@ submit3.addEventListener("click",function(e){
     (symBox.checked) ? characters += sym : '';
 	(imgBox.checked) ? characters += img : '';
     yourPw3.value = password(charNum.value, characters);
+	yourPwImage3.src = choosePictureLocation();
 });
 
 function password(l,characters){
@@ -57,8 +62,26 @@ function password(l,characters){
     return pwd;
 }
 
+//chooses the picture in the pictures array that this password will be associated with
 function choosePictureLocation() {
-	return getRandomInt(pictures.size);
+	var pictureLocation = getRandomInt(picturesSize);
+	var pictureString = ''; 
+	
+	if (pictureLocation == 0) {
+		pictureString = "man.gif"; 
+	} else if (pictureLocation == 1) {
+		pictureString = "dog.gif";
+	} else if (pictureLocation == 2) {
+		pictureString = "car.gif";
+	} else if (pictureLocation == 3) {
+		pictureString = "woman.gif"; 
+	} else if (pictureLocation == 4) {
+		pictureString = "ball.gif";
+	} else {
+		pictureString = "apple.gif";
+	}
+
+	return pictureString;
 }
 
 //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
