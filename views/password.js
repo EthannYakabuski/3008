@@ -53,8 +53,36 @@ submit3.addEventListener("click",function(e){
 
 test.addEventListener("click", function(e) {
 	
-	
+	sendData();
+	 
 });
+
+function sendData() {
+	console.log("Sending password data"); 
+	
+	//get the passwords from the page
+	var userData = {
+		pass1: $("#yourPw1").value
+	}
+	
+	
+	$.post("/submit", userData, 
+	function(data) {
+		console.log("response received");
+	});
+	
+	
+	/*
+	$.ajax({method: "POST", 
+			data: userData,
+			
+			success: function(data) {
+				console.log("response received");
+			}
+	});
+	*/
+	
+}
 
 
 function password(l,characters){
