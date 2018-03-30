@@ -1,7 +1,7 @@
 var char = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 var num = '0123456789';
 var sym = '!@#$%^&*=-_';
-var img = 'car.gif';
+
 
 
 var pictures = ["Man", "Dog", "Car", "Woman", "Ball", "Apple"];
@@ -31,7 +31,6 @@ submit1.addEventListener("click",function(e){
     var characters = char;
     (numBox.checked) ? characters += num : '';
     (symBox.checked) ? characters += sym : '';
-	(imgBox.checked) ? characters += img : '';
     yourPw1.value = password(charNum.value, characters);
 	yourPwImage1.src = choosePictureLocation();
 });
@@ -40,7 +39,6 @@ submit2.addEventListener("click",function(e){
     var characters = char;
     (numBox.checked) ? characters += num : '';
     (symBox.checked) ? characters += sym : '';
-	(imgBox.checked) ? characters += img : '';
     yourPw2.value = password(charNum.value, characters);
 	yourPwImage2.src = choosePictureLocation();
 });
@@ -49,10 +47,15 @@ submit3.addEventListener("click",function(e){
     var characters = char;
     (numBox.checked) ? characters += num : '';
     (symBox.checked) ? characters += sym : '';
-	(imgBox.checked) ? characters += img : '';
     yourPw3.value = password(charNum.value, characters);
 	yourPwImage3.src = choosePictureLocation();
 });
+
+test.addEventListener("click", function(e) {
+	
+	
+});
+
 
 function password(l,characters){
 	var pwd = '';
