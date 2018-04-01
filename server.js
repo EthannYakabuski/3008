@@ -49,21 +49,24 @@ app.post('/submit', function(req, res) {
 	} else {
 		MongoClient.connect("mongodb://localhost:27017/3008DB",function(err,database) {
 		
-			//console.log(database);
 		
 		    if(err) {
 				console.log("error connecting to the DB");
 				console.log(err);
 			} else {
+				var dbo = database.db("3008DB");
 				
 				console.log("The following is being submitted");
 				console.log(req.body);
 			
-				var collection = database.collection("passwords").find();
-		
-				console.log(collection);
+			    dbo.collection("passwords").insertOne(req.body, function(err, res) {
+					if (err) throw err;
+					console.log("Document inserted");
+					database.close();
+				});
+				//console.log(collection);
 	
-				
+				//database.collection.insert(req.body);
 				
 			}
 		});
