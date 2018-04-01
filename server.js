@@ -11,7 +11,7 @@ var bodyParser = require('body-parser');
 
 var cookieParser = require('cookie-parser');
 
-
+var db;
 
 //var mongo = require('mongodb').MongoClient;   //storage of data
 app.use(express.static('views'));
@@ -47,22 +47,27 @@ app.post('/submit', function(req, res) {
 		res.sendStatus(400);
 		console.log("problems");
 	} else {
-		MongoClient.connect("mongodb://localhost:27017/3008DB",function(err,db) {
-		console.log(req.body);
-		var collection = db.collection("passwords");
-		collection.update({name:req.body.name},req.body,{upsert:true}, function(err,result){
-			if (err) {
-				res.sendStatus(500);
-			}
-			else {
-				res.sendStatus(200);
+		MongoClient.connect("mongodb://localhost:27017/3008DB",function(err,database) {
+		
+			//console.log(database);
+		
+		    if(err) {
+				console.log("error connecting to the DB");
+				console.log(err);
+			} else {
+				
+				console.log("The following is being submitted");
+				console.log(req.body);
+			
+				var collection = database.collection("passwords").find();
+		
+				console.log(collection);
+	
+				
+				
 			}
 		});
-		});
-	}
-    
-	
-	
+	}	
 });
 
 

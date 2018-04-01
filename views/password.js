@@ -59,10 +59,28 @@ test.addEventListener("click", function(e) {
 
 function sendData() {
 	console.log("Sending password data"); 
+
+	console.log( yourPw1.value );
+	console.log( yourPwImage1.src );
+	
+	console.log( yourPw2.value );
+	console.log( yourPwImage2.src );
+	
+	console.log( yourPw3.value );
+	console.log( yourPwImage3.src );
 	
 	//get the passwords from the page
 	var userData = {
-		pass1: $("#yourPw1").value
+		pass1: yourPw1.value,
+		passImage1: yourPwImage1.src,
+		
+		pass2: yourPw2.value,
+		passImage2: yourPwImage2.src,
+		
+		pass3: yourPw3.value,
+		passImage3: yourPwImage3.src
+		
+		
 	}
 	
 	
