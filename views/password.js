@@ -4,6 +4,7 @@ var sym = '!@#$%^&*=-_';
 
 
 
+
 var pictures = ["Man", "Dog", "Car", "Woman", "Ball", "Apple"];
 var picturesSize = 6;
 
@@ -68,6 +69,7 @@ function sendData() {
 	
 	console.log( yourPw3.value );
 	console.log( yourPwImage3.src );
+
 	
 	//get the passwords from the page
 	var userData = {
@@ -86,8 +88,10 @@ function sendData() {
 	
 	$.post("/submit", userData, 
 	function(data) {
-		console.log("response received");
+		console.log("response received, password data saved to database");
+		loadTestPage();
 	});
+	
 	
 	
 	/*
@@ -100,6 +104,26 @@ function sendData() {
 	});
 	*/
 	
+}
+
+function loadTestPage() {
+	
+	console.log("In loadTestPage() ");
+	
+	/*
+	$.ajax( {method:"GET", 
+		url: "/test",
+		success: function(data) {
+			console.log("test page loaded");
+			
+			
+		}
+	});
+	*/
+	
+	window.location.href = "test.html";
+	
+
 }
 
 

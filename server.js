@@ -12,8 +12,14 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 
 var db;
+var participant = 0; 
 
 //var mongo = require('mongodb').MongoClient;   //storage of data
+
+//https://stackoverflow.com/questions/23595282/error-no-default-engine-was-specified-and-no-extension-was-provided
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
+
 app.use(express.static('views'));
 app.set('views', './views'); 
 
@@ -57,7 +63,11 @@ app.post('/submit', function(req, res) {
 				var dbo = database.db("3008DB");
 				
 				console.log("The following is being submitted");
+				req.body.participantID = participant;
+				participant++;
+				
 				console.log(req.body);
+				
 			
 			    dbo.collection("passwords").insertOne(req.body, function(err, res) {
 					if (err) throw err;
@@ -70,7 +80,15 @@ app.post('/submit', function(req, res) {
 				
 			}
 		});
+		
+		res.sendStatus(200);
 	}	
+});
+
+app.get('/test', function(req, res) {
+	
+	console.log("loading the test page");
+	res.render('test', {});
 });
 
 
