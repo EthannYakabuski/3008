@@ -236,7 +236,7 @@ bankButton.addEventListener("click", function(e) {
 	console.log("This password attempt is being sent to the server:"); 
 	console.log(userData);
 	
-	$.post("/test",userData, 
+	$.post("/passAttempt",userData, 
 	function(data) {
 		console.log("response received Bank password checked"); 
 	});
@@ -274,7 +274,7 @@ shoppingButton.addEventListener("click", function(e) {
 	console.log("This password attempt is being sent to the server:"); 
 	console.log(userData);
 	
-	$.post("/test",userData, 
+	$.post("/passAttempt",userData, 
 	function(data) {
 		console.log("response received shopping password checked"); 
 	});
@@ -311,7 +311,7 @@ emailButton.addEventListener("click", function(e) {
 	console.log("This password attempt is being sent to the server:"); 
 	console.log(userData);
 	
-	$.post("/test",userData, 
+	$.post("/passAttempt",userData, 
 	function(data) {
 		console.log("response received email password checked"); 
 	});
