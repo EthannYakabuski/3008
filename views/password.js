@@ -121,6 +121,9 @@ function loadTestPage() {
 	});
 	*/
 	
+	//https://stackoverflow.com/questions/442384/jumping-to-a-new-html-page-with-javascript/442393#442393?newreg=ad510bb969e34afb86b3217f61625b1c
+	//not safe and may interfere with back button usage
+	//for our use here this is okay as we are staying local
 	window.location.href = "test.html";
 	
 
