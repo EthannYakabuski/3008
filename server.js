@@ -46,6 +46,7 @@ app.use(function(req, res, next) {
     next();
 }); 
 
+
 app.use('/submit', bodyParser.urlencoded({extended:true}));
 app.post('/submit', function(req, res) {
 
@@ -87,10 +88,80 @@ app.post('/submit', function(req, res) {
 
 app.use('/passAttempt', bodyParser.urlencoded({extended:true}));
 app.post('/passAttempt', function(req, res) {
-	console.log(req.body);
+	
+	//console.log(req.body);
+	
+	//NOTE: assuming last entry in database is the participant we are concerned with now
+	//this assumption is only accurate on the local only version of this website
+	//to launch to the world wide web this would need to be fixed
+	
+	MongoClient.connect("mongodb://localhost:27017/3008DB",function(err,database) {
+		
+		var dbo = database.db("3008DB");
+		
+		
+		if (req.body.passwordType == "bank") {
+			
+			
+		  var collection = dbo.collection("passwords");
+		  var query = {  };
+		  
+		  dbo.collection("passwords").find(query).toArray(function(err, result) {
+			  if (err) throw err; 
+			  
+			  //console.log(result);
+			  
+			  if(result[0].pass1 === req.body.passwordEntered) {
+				  console.log("correct password");
+			  }
+			  
+			  database.close();
+		  });
+		
+		  
+		} else if (req.body.passwordType == "shopping") {
+			
+		  var collection = dbo.collection("passwords");
+		  var query = {  };
+		  
+		  dbo.collection("passwords").find(query).toArray(function(err, result) {
+			  if (err) throw err; 
+			  
+			  //console.log(result);
+			  
+			  if(result[0].pass2 === req.body.passwordEntered) {
+				  console.log("correct password");
+			  }
+			  
+			  database.close();
+		  });
+		
+		} else if (req.body.passwordType == "email") {
+		
+		
+		  var collection = dbo.collection("passwords");
+		  var query = {  };
+		  
+		  dbo.collection("passwords").find(query).toArray(function(err, result) {
+			  if (err) throw err; 
+			  
+			  //console.log(result);
+			  
+			  if(result[0].pass3 === req.body.passwordEntered) {
+				  console.log("correct password");
+			  }
+			  
+			  database.close();
+		  });
+		
+		}
+		
+	});
 	
 	
 });
+
+
 
 app.get('/test', function(req, res) {
 	

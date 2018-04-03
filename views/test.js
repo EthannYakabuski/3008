@@ -209,6 +209,7 @@ bankButton.addEventListener("click", function(e) {
     var pictureLocation; 	
     var passwordEntered;
 	var passwordType = "bank";
+	var participantNum;
 	
 	if(manBankImage.style.border === "thick solid rgb(0, 0, 255)") {
 		pictureLocation = 0;
