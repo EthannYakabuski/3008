@@ -14,6 +14,7 @@ var cookieParser = require('cookie-parser');
 var db;
 var participant = 0; 
 
+
 http.globalAgent.maxSockets = 1000;
 
 //var mongo = require('mongodb').MongoClient;   //storage of data
@@ -133,6 +134,8 @@ app.post('/passAttempt', function(req, res) {
 		
 		
 		if (req.body.passwordType == "bank") {
+			
+			
 			  
 		    var collection = dbo.collection("passwords");
 		    var query = {  };
@@ -142,19 +145,46 @@ app.post('/passAttempt', function(req, res) {
 			  
 			    //console.log(result);
 			  
-			  
+			 
 			    if(result[0].pass1 === req.body.passwordEntered) {
 				    if(result[0].passImage1 == pictureString) {
 					  
 				       console.log("correct password");
-				    } else {
+					   
 					 
-					   console.log("wrong password");
-				    }
-			    }
+					   
+					   req.body.participantID = participant -1;
+					   
+					   console.log("inserting this login information into the database:"); 
+					   console.log(req.body);
+					   
+					   dbo.collection("logins").insertOne(req.body, function(err, res) {
+					      if (err) throw err;
+					      console.log("Document inserted");
+					      database.close();
+				       });
+					   
+					   
+				    } 
+			    } else {
+					
+					console.log("wrong password");
+					   
+					   if(req.body.numTries == 3) {
+						  
+						 dbo.collection("logins").insertOne(req.body, function(err, res) {
+					        if (err) throw err;
+					        console.log("Document inserted");
+					        database.close();
+				         });
+					   }
 			  
 			    database.close();
-		    });
+				}
+			});
+			
+		    
+		  
 		 
 		} else if (req.body.passwordType == "shopping") {
 			
@@ -170,15 +200,41 @@ app.post('/passAttempt', function(req, res) {
 				  if(result[0].passImage2 == pictureString) {
 					  
 				     console.log("correct password");
-				  } else {
-					  console.log("wrong password");
+					 
+					 
+					 
+					 req.body.participantID = participant -1;
+					   
+					 console.log("inserting this login information into the database:"); 
+					 console.log(req.body);
+					   
+					 dbo.collection("logins").insertOne(req.body, function(err, res) {
+					    if (err) throw err;
+					    console.log("Document inserted");
+					    database.close();
+				     });
 				  }
+					   
+			  } else {
+				  console.log("wrong password");
+					  
+					  if(req.body.numTries == 3) {
+						  
+						 dbo.collection("logins").insertOne(req.body, function(err, res) {
+					        if (err) throw err;
+					        console.log("Document inserted");
+					        database.close();
+				         });
+						  
+						  
+					  }
 			  }
 			  
 			  database.close();
 		  });
 		
 		} else {
+			
 		
 		  console.log("in email");
 		
@@ -194,10 +250,36 @@ app.post('/passAttempt', function(req, res) {
 				  if(result[0].passImage3 == pictureString) {
 					  
 				     console.log("correct password");
-				  } else {
-					  console.log("wrong password");
+					 
+					 
+					 
+					 req.body.participantID = participant -1;
+					   
+					 console.log("inserting this login information into the database:"); 
+					 console.log(req.body);
+					   
+					 dbo.collection("logins").insertOne(req.body, function(err, res) {
+					    if (err) throw err;
+					    console.log("Document inserted");
+					    database.close();
+				     });
 				  }
-			  }
+					 	 
+			  } else {
+				  console.log("wrong password");
+					  
+					  if(req.body.numTries == 3) {
+						  
+						 dbo.collection("logins").insertOne(req.body, function(err, res) {
+					        if (err) throw err;
+					        console.log("Document inserted");
+					        database.close();
+				         });
+						  
+						  
+					  }
+				  
+			 }
 			  
 			  database.close();
 		  });

@@ -42,6 +42,10 @@ var numTries1 = 0;
 var numTries2 = 0;
 var numTries3 = 0;
 
+var pass1Success = false; 
+var pass2Success = false; 
+var pass3Success = false; 
+
 manBankImage.addEventListener("click", function(e) {
 	manBankImage.style.border = "thick solid #0000FF"; 
 	dogBankImage.style.border = "none";
@@ -252,6 +256,9 @@ bankButton.addEventListener("click", function(e) {
 	  $.post("/passAttempt",userData, 
 	  function(data) {
 		  console.log("response received Bank password checked"); 
+		  
+		  console.log(data.success);
+		  
 	  });
 	}
 	
