@@ -141,10 +141,14 @@ app.post('/passAttempt', function(req, res) {
 			  
 			  //console.log(result);
 			  
-			  var pictureString;
-			  
 			  if(result[0].pass1 === req.body.passwordEntered) {
-				  console.log("correct password");
+				  if(result[0].passImage1 == pictureString) {
+					  
+				     console.log("correct password");
+				  } else {
+					 
+					 console.log("wrong password");
+				  }
 			  }
 			  
 			  database.close();
@@ -162,7 +166,12 @@ app.post('/passAttempt', function(req, res) {
 			  //console.log(result);
 			  
 			  if(result[0].pass2 === req.body.passwordEntered) {
-				  console.log("correct password");
+				  if(result[0].passImage2 == pictureString) {
+					  
+				     console.log("correct password");
+				  } else {
+					  console.log("wrong password");
+				  }
 			  }
 			  
 			  database.close();
@@ -180,7 +189,12 @@ app.post('/passAttempt', function(req, res) {
 			  //console.log(result);
 			  
 			  if(result[0].pass3 === req.body.passwordEntered) {
-				  console.log("correct password");
+				  if(result[0].passImage3 == pictureString) {
+					  
+				     console.log("correct password");
+				  } else {
+					  console.log("wrong password");
+				  }
 			  }
 			  
 			  database.close();
