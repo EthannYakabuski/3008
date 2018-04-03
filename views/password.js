@@ -1,8 +1,10 @@
 var char = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-var num = '0123456789';
-var sym = '!@#$%^&*=-_';
-
-
+var num1 = '0123456789';
+var sym1 = '!@#$%^&*=-_';
+var num2 = '0123456789';
+var sym2 = '!@#$%^&*=-_';
+var num3 = '0123456789';
+var sym3 = '!@#$%^&*=-_';
 
 
 var pictures = ["Man", "Dog", "Car", "Woman", "Ball", "Apple"];
@@ -12,9 +14,12 @@ var picturePasswords = [0, 0, 0];
 var picturePasswordCycler = 0;
 
 var charNum = document.getElementById("charNum");
-var numBox = document.getElementById("num");
-var symBox = document.getElementById("sym");
-var imgBox = document.getElementById("img");
+var numBox1 = document.getElementById("num1");
+var symBox1 = document.getElementById("sym1");
+var numBox2 = document.getElementById("num2");
+var symBox2 = document.getElementById("sym2");
+var numBox3 = document.getElementById("num3");
+var symBox3 = document.getElementById("sym3");
 var submit1 = document.getElementById("submit1");
 var submit2 = document.getElementById("submit2");
 var submit3 = document.getElementById("submit3");
@@ -30,24 +35,24 @@ var yourPwImage3 = document.getElementById("yourPwImage3");
 
 submit1.addEventListener("click",function(e){
     var characters = char;
-    (numBox.checked) ? characters += num : '';
-    (symBox.checked) ? characters += sym : '';
+    (numBox1.checked) ? characters += num1 : '';
+    (symBox1.checked) ? characters += sym1: '';
     yourPw1.value = password(charNum.value, characters);
 	yourPwImage1.src = choosePictureLocation();
 });
 
 submit2.addEventListener("click",function(e){
     var characters = char;
-    (numBox.checked) ? characters += num : '';
-    (symBox.checked) ? characters += sym : '';
+    (numBox2.checked) ? characters += num2 : '';
+    (symBox2.checked) ? characters += sym2 : '';
     yourPw2.value = password(charNum.value, characters);
 	yourPwImage2.src = choosePictureLocation();
 });
 
 submit3.addEventListener("click",function(e){
     var characters = char;
-    (numBox.checked) ? characters += num : '';
-    (symBox.checked) ? characters += sym : '';
+    (numBox3.checked) ? characters += num3 : '';
+    (symBox3.checked) ? characters += sym3 : '';
     yourPw3.value = password(charNum.value, characters);
 	yourPwImage3.src = choosePictureLocation();
 });
