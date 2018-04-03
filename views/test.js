@@ -34,7 +34,13 @@ var womanEmailImage = document.getElementById("womanEmail");
 var ballEmailImage = document.getElementById("ballEmail");
 var appleEmailImage = document.getElementById("appleEmail");
 
+var bankWarning = document.getElementById("bankWarning");
+var shoppingWarning = document.getElementById("shoppingWarning");
+var emailWarning = document.getElementById("emailWarning");
 
+var numTries1 = 0; 
+var numTries2 = 0;
+var numTries3 = 0;
 
 manBankImage.addEventListener("click", function(e) {
 	manBankImage.style.border = "thick solid #0000FF"; 
@@ -206,116 +212,140 @@ appleEmailImage.addEventListener("click", function(e) {
 
 bankButton.addEventListener("click", function(e) {
 	//create data object to send to server to check to see if password is correct
-    var pictureLocation; 	
-    var passwordEntered;
-	var passwordType = "bank";
-	var participantNum;
 	
-	if(manBankImage.style.border === "thick solid rgb(0, 0, 255)") {
-		pictureLocation = 0;
-	} else if (dogBankImage.style.border === "thick solid rgb(0, 0, 255)") {
-		pictureLocation = 1; 
-	} else if (carBankImage.style.border === "thick solid rgb(0, 0, 255)") {
-		pictureLocation = 2; 
-	} else if (womanBankImage.style.border === "thick solid rgb(0, 0, 255)") {
-		pictureLocation = 3;
-	} else if (ballBankImage.style.border === "thick solid rgb(0, 0, 255)") {
-		pictureLocation = 4; 
-	} else if (appleBankImage.style.border === "thick solid rgb(0, 0, 255)") {
-		pictureLocation = 5; 
+	if(numTries1 >= 3) {
+		bankWarning.innerHTML = "You have already tried the maximum number of times";
+	} else {
+      var pictureLocation; 	
+      var passwordEntered;
+	  var passwordType = "bank";
+	  var participantNum;
+	
+	  if(manBankImage.style.border === "thick solid rgb(0, 0, 255)") {
+		  pictureLocation = 0;
+	  } else if (dogBankImage.style.border === "thick solid rgb(0, 0, 255)") {
+		  pictureLocation = 1; 
+	  } else if (carBankImage.style.border === "thick solid rgb(0, 0, 255)") {
+		  pictureLocation = 2; 
+	  } else if (womanBankImage.style.border === "thick solid rgb(0, 0, 255)") {
+		  pictureLocation = 3;
+	  } else if (ballBankImage.style.border === "thick solid rgb(0, 0, 255)") {
+		  pictureLocation = 4; 
+	  } else if (appleBankImage.style.border === "thick solid rgb(0, 0, 255)") {
+		  pictureLocation = 5; 
+	  }
+	
+	  passwordEntered = yourPw1.value;
+	
+	  numTries1++;
+	
+	  var userData = {
+		  pictureLocation: pictureLocation,
+	      passwordEntered: passwordEntered, 
+		  passwordType: passwordType,
+		  numTries: numTries1
+	  };
+	
+	  console.log("This password attempt is being sent to the server:"); 
+	  console.log(userData);
+	
+	  $.post("/passAttempt",userData, 
+	  function(data) {
+		  console.log("response received Bank password checked"); 
+	  });
 	}
-	
-	passwordEntered = yourPw1.value;
-	
-	
-	var userData = {
-		pictureLocation: pictureLocation,
-	    passwordEntered: passwordEntered, 
-		passwordType: passwordType
-	}
-	
-	console.log("This password attempt is being sent to the server:"); 
-	console.log(userData);
-	
-	$.post("/passAttempt",userData, 
-	function(data) {
-		console.log("response received Bank password checked"); 
-	});
 	
 });
 
 shoppingButton.addEventListener("click", function(e) {
 	//create data object to send to server to check to see if password is correct
-	var pictureLocation; 	
-    var passwordEntered;
-	var passwordType = "shopping";
 	
-	if(manShoppingImage.style.border === "thick solid rgb(0, 0, 255)") {
-		pictureLocation = 0;
-	} else if (dogShoppingImage.style.border === "thick solid rgb(0, 0, 255)") {
-		pictureLocation = 1; 
-	} else if (carShoppingImage.style.border === "thick solid rgb(0, 0, 255)") {
-		pictureLocation = 2; 
-	} else if (womanShoppingImage.style.border === "thick solid rgb(0, 0, 255)") {
-		pictureLocation = 3;
-	} else if (ballShoppingImage.style.border === "thick solid rgb(0, 0, 255)") {
-		pictureLocation = 4; 
-	} else if (appleShoppingImage.style.border === "thick solid rgb(0, 0, 255)") {
-		pictureLocation = 5; 
+	if(numTries2 >= 3) {
+		shoppingWarning.innerHTML = "You have already tried the maximum number of times";
+	} else {
+	  var pictureLocation; 	
+      var passwordEntered;
+	  var passwordType = "shopping";
+	
+	  if(manShoppingImage.style.border === "thick solid rgb(0, 0, 255)") {
+		  pictureLocation = 0;
+	  } else if (dogShoppingImage.style.border === "thick solid rgb(0, 0, 255)") {
+		  pictureLocation = 1; 
+	  } else if (carShoppingImage.style.border === "thick solid rgb(0, 0, 255)") {
+		  pictureLocation = 2; 
+	  } else if (womanShoppingImage.style.border === "thick solid rgb(0, 0, 255)") {
+		  pictureLocation = 3;
+	  } else if (ballShoppingImage.style.border === "thick solid rgb(0, 0, 255)") {
+		  pictureLocation = 4; 
+	  } else if (appleShoppingImage.style.border === "thick solid rgb(0, 0, 255)") {
+		  pictureLocation = 5; 
+	  }
+	
+	  passwordEntered = yourPw2.value;
+	
+	  numTries2++;
+	
+	  var userData = {
+		  pictureLocation: pictureLocation,
+	      passwordEntered: passwordEntered,
+		  passwordType: passwordType,
+		  numTries: numTries2
+	  };
+	
+	  console.log("This password attempt is being sent to the server:"); 
+	  console.log(userData);
+	
+	  $.post("/passAttempt",userData, 
+	  function(data) {
+		  console.log("response received shopping password checked"); 
+	  });
 	}
-	
-	passwordEntered = yourPw2.value;
-	
-	var userData = {
-		pictureLocation: pictureLocation,
-	    passwordEntered: passwordEntered,
-		passwordType: passwordType
-	}
-	
-	console.log("This password attempt is being sent to the server:"); 
-	console.log(userData);
-	
-	$.post("/passAttempt",userData, 
-	function(data) {
-		console.log("response received shopping password checked"); 
-	});
-});
+  });
 
 emailButton.addEventListener("click", function(e) {
 	//create data object to send to server to check to see if password is correct
-	var pictureLocation; 	
-    var passwordEntered;
-	var passwordType = "email";
 	
-	if(manEmailImage.style.border === "thick solid rgb(0, 0, 255)") {
-		pictureLocation = 0;
-	} else if (dogEmailImage.style.border === "thick solid rgb(0, 0, 255)") {
-		pictureLocation = 1; 
-	} else if (carEmailImage.style.border === "thick solid rgb(0, 0, 255)") {
-		pictureLocation = 2; 
-	} else if (womanEmailImage.style.border === "thick solid rgb(0, 0, 255)") {
-		pictureLocation = 3;
-	} else if (ballEmailImage.style.border === "thick solid rgb(0, 0, 255)") {
-		pictureLocation = 4; 
-	} else if (appleEmailImage.style.border === "thick solid rgb(0, 0, 255)") {
-		pictureLocation = 5; 
+	if(numTries3 >= 3) {
+		emailWarning.innerHTML = "You have already tried the maximum number of times";
+	} else {
+		
+	  var pictureLocation; 	
+      var passwordEntered;
+	  var passwordType = "email";
+	
+	  if(manEmailImage.style.border === "thick solid rgb(0, 0, 255)") {
+		  pictureLocation = 0;
+	  } else if (dogEmailImage.style.border === "thick solid rgb(0, 0, 255)") {
+		  pictureLocation = 1; 
+	  } else if (carEmailImage.style.border === "thick solid rgb(0, 0, 255)") {
+		  pictureLocation = 2; 
+	  } else if (womanEmailImage.style.border === "thick solid rgb(0, 0, 255)") {
+		  pictureLocation = 3;
+	  } else if (ballEmailImage.style.border === "thick solid rgb(0, 0, 255)") {
+		  pictureLocation = 4; 
+	  } else if (appleEmailImage.style.border === "thick solid rgb(0, 0, 255)") {
+		  pictureLocation = 5; 
+	  }
+	
+	  passwordEntered = yourPw3.value;
+	
+	  numTries3++;
+	
+	  var userData = {
+		  pictureLocation: pictureLocation,
+	      passwordEntered: passwordEntered,
+		  passwordType: passwordType,
+		  numTries: numTries3
+	  };
+	
+	  console.log("This password attempt is being sent to the server:"); 
+	  console.log(userData);
+	
+	  $.post("/passAttempt",userData, 
+	  function(data) {
+		  console.log("response received email password checked"); 
+	  });
 	}
-	
-	passwordEntered = yourPw3.value;
-	
-	var userData = {
-		pictureLocation: pictureLocation,
-	    passwordEntered: passwordEntered,
-		passwordType: passwordType
-	}
-	
-	console.log("This password attempt is being sent to the server:"); 
-	console.log(userData);
-	
-	$.post("/passAttempt",userData, 
-	function(data) {
-		console.log("response received email password checked"); 
-	});
 	
 });
 

@@ -14,6 +14,8 @@ var cookieParser = require('cookie-parser');
 var db;
 var participant = 0; 
 
+http.globalAgent.maxSockets = 1000;
+
 //var mongo = require('mongodb').MongoClient;   //storage of data
 
 //https://stackoverflow.com/questions/23595282/error-no-default-engine-was-specified-and-no-extension-was-provided
@@ -22,7 +24,6 @@ app.set('view engine', 'html');
 
 app.use(express.static('views'));
 app.set('views', './views'); 
-
 
 
 
@@ -132,29 +133,29 @@ app.post('/passAttempt', function(req, res) {
 		
 		
 		if (req.body.passwordType == "bank") {
-			
-		  var collection = dbo.collection("passwords");
-		  var query = {  };
+			  
+		    var collection = dbo.collection("passwords");
+		    var query = {  };
 		  
-		  dbo.collection("passwords").find(query).toArray(function(err, result) {
-			  if (err) throw err; 
+		    dbo.collection("passwords").find(query).toArray(function(err, result) {
+			    if (err) throw err; 
 			  
-			  //console.log(result);
+			    //console.log(result);
 			  
-			  if(result[0].pass1 === req.body.passwordEntered) {
-				  if(result[0].passImage1 == pictureString) {
+			  
+			    if(result[0].pass1 === req.body.passwordEntered) {
+				    if(result[0].passImage1 == pictureString) {
 					  
-				     console.log("correct password");
-				  } else {
+				       console.log("correct password");
+				    } else {
 					 
-					 console.log("wrong password");
-				  }
-			  }
+					   console.log("wrong password");
+				    }
+			    }
 			  
-			  database.close();
-		  });
-		
-		  
+			    database.close();
+		    });
+		 
 		} else if (req.body.passwordType == "shopping") {
 			
 		  var collection = dbo.collection("passwords");
@@ -177,8 +178,9 @@ app.post('/passAttempt', function(req, res) {
 			  database.close();
 		  });
 		
-		} else if (req.body.passwordType == "email") {
+		} else {
 		
+		  console.log("in email");
 		
 		  var collection = dbo.collection("passwords");
 		  var query = {  };
@@ -200,10 +202,11 @@ app.post('/passAttempt', function(req, res) {
 			  database.close();
 		  });
 		
-		}
+		} 
 		
 	});
 	
+	res.sendStatus(200);
 	
 });
 
