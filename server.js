@@ -99,9 +99,39 @@ app.post('/passAttempt', function(req, res) {
 		
 		var dbo = database.db("3008DB");
 		
+		var pictureString;
+		
+		if(req.body.pictureLocation == 0) {
+					  
+			pictureString = "http://localhost:3008/man.gif";
+
+		} else if (req.body.pictureLocation == 1) {
+			
+			pictureString = "http://localhost:3008/dog.gif";
+			
+		} else if (req.body.pictureLocation == 2) {
+			
+			pictureString = "http://localhost:3008/car.gif";
+			
+		} else if (req.body.pictureLocation == 3) {
+			
+			pictureString = "http://localhost:3008/woman.gif";
+			
+		} else if (req.body.pictureLocation == 4) {
+			
+			pictureString = "http://localhost:3008/ball.gif";
+			
+		} else if (req.body.pictureLocation == 5) {
+			
+			pictureString = "http://localhost:3008/apple.gif";
+			
+		}
+		
+		console.log("Picture String:" + pictureString);
+
+		
 		
 		if (req.body.passwordType == "bank") {
-			
 			
 		  var collection = dbo.collection("passwords");
 		  var query = {  };
@@ -110,6 +140,8 @@ app.post('/passAttempt', function(req, res) {
 			  if (err) throw err; 
 			  
 			  //console.log(result);
+			  
+			  var pictureString;
 			  
 			  if(result[0].pass1 === req.body.passwordEntered) {
 				  console.log("correct password");
