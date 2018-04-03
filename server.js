@@ -14,6 +14,10 @@ var cookieParser = require('cookie-parser');
 var db;
 var participant = 0; 
 
+var bankStartTime;
+var shoppingStartTime;
+var emailStartTime;
+
 
 http.globalAgent.maxSockets = 1000;
 
@@ -138,7 +142,7 @@ app.post('/passAttempt', function(req, res) {
 			
 			  
 		    var collection = dbo.collection("passwords");
-		    var query = {  };
+		    var query = { };
 		  
 		    dbo.collection("passwords").find(query).toArray(function(err, result) {
 			    if (err) throw err; 
@@ -146,8 +150,8 @@ app.post('/passAttempt', function(req, res) {
 			    //console.log(result);
 			  
 			 
-			    if(result[0].pass1 === req.body.passwordEntered) {
-				    if(result[0].passImage1 == pictureString) {
+			    if(result[participant-1].pass1 === req.body.passwordEntered) {
+				    if(result[participant-1].passImage1 == pictureString) {
 					  
 				       console.log("correct password");
 					   
@@ -196,8 +200,8 @@ app.post('/passAttempt', function(req, res) {
 			  
 			  //console.log(result);
 			  
-			  if(result[0].pass2 === req.body.passwordEntered) {
-				  if(result[0].passImage2 == pictureString) {
+			  if(result[participant-1].pass2 === req.body.passwordEntered) {
+				  if(result[participant-1].passImage2 == pictureString) {
 					  
 				     console.log("correct password");
 					 
@@ -246,8 +250,8 @@ app.post('/passAttempt', function(req, res) {
 			  
 			  //console.log(result);
 			  
-			  if(result[0].pass3 === req.body.passwordEntered) {
-				  if(result[0].passImage3 == pictureString) {
+			  if(result[participant-1].pass3 === req.body.passwordEntered) {
+				  if(result[participant-1].passImage3 == pictureString) {
 					  
 				     console.log("correct password");
 					 
@@ -297,6 +301,11 @@ app.post('/passAttempt', function(req, res) {
 app.get('/test', function(req, res) {
 	
 	console.log("loading the test page");
+	
+	bankStartTime = newDate();
+	
+	console.log(bankStartTime);
+	
 	res.render('test', {});
 });
 

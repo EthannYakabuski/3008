@@ -46,6 +46,8 @@ var pass1Success = false;
 var pass2Success = false; 
 var pass3Success = false; 
 
+
+
 manBankImage.addEventListener("click", function(e) {
 	manBankImage.style.border = "thick solid #0000FF"; 
 	dogBankImage.style.border = "none";
