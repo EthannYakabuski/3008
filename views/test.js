@@ -46,6 +46,10 @@ var pass1Success = false;
 var pass2Success = false; 
 var pass3Success = false; 
 
+var bankTime = 0; 
+var shoppingTime = 0; 
+var emailTime = 0; 
+
 
 
 manBankImage.addEventListener("click", function(e) {
@@ -214,7 +218,19 @@ appleEmailImage.addEventListener("click", function(e) {
 	ballEmailImage.style.border = "none";
 });
 
+var myBankInt = setInterval(function() {
+	bankTime++;
+}, 1000);
 
+var myShoppingInt = setInterval(function() {
+	shoppingTime++;
+}, 1000);
+
+var myEmailInt = setInterval(function() {
+	emailTime++;
+}, 1000);
+
+	
 
 bankButton.addEventListener("click", function(e) {
 	//create data object to send to server to check to see if password is correct
@@ -249,7 +265,8 @@ bankButton.addEventListener("click", function(e) {
 		  pictureLocation: pictureLocation,
 	      passwordEntered: passwordEntered, 
 		  passwordType: passwordType,
-		  numTries: numTries1
+		  numTries: numTries1, 
+		  time: bankTime
 	  };
 	
 	  console.log("This password attempt is being sent to the server:"); 
@@ -258,8 +275,11 @@ bankButton.addEventListener("click", function(e) {
 	  $.post("/passAttempt",userData, 
 	  function(data) {
 		  console.log("response received Bank password checked"); 
-		  
 		  console.log(data.success);
+		  
+		  if(data.success) {
+			  
+		  }
 		  
 	  });
 	}
@@ -298,7 +318,8 @@ shoppingButton.addEventListener("click", function(e) {
 		  pictureLocation: pictureLocation,
 	      passwordEntered: passwordEntered,
 		  passwordType: passwordType,
-		  numTries: numTries2
+		  numTries: numTries2, 
+		  time: shoppingTime
 	  };
 	
 	  console.log("This password attempt is being sent to the server:"); 
@@ -344,7 +365,8 @@ emailButton.addEventListener("click", function(e) {
 		  pictureLocation: pictureLocation,
 	      passwordEntered: passwordEntered,
 		  passwordType: passwordType,
-		  numTries: numTries3
+		  numTries: numTries3,
+		  time: emailTime
 	  };
 	
 	  console.log("This password attempt is being sent to the server:"); 

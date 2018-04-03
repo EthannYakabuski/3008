@@ -14,10 +14,6 @@ var cookieParser = require('cookie-parser');
 var db;
 var participant = 0; 
 
-var bankStartTime;
-var shoppingStartTime;
-var emailStartTime;
-
 
 http.globalAgent.maxSockets = 1000;
 
@@ -301,10 +297,6 @@ app.post('/passAttempt', function(req, res) {
 app.get('/test', function(req, res) {
 	
 	console.log("loading the test page");
-	
-	bankStartTime = newDate();
-	
-	console.log(bankStartTime);
 	
 	res.render('test', {});
 });
