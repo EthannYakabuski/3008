@@ -2,15 +2,22 @@
 
 <html>
 
-
+<div class="container">
 <head>
+<div id="header">
+	
 	<meta charset="utf-8">
-	<title>Password Generator</title>
+	<div id="Logo"><img src="keys.png" border="0" alt="Password Generator"></div>
+	<div id="LogoText">Password Generator</div>
+			
+</div>
+
 </head>
 
 <body>
-	<h1>Generate Passwords</h1>
 	<h2>Bank</h2>
+	<div id="ImageUnderHeader"><img src="banking.png" border="0" height="100" width="300"></div>
+	
 	
 	How many characters? <input type="number" id="charNum" value="3" min="8" max="100" /><br />
 	Number: <input type="checkbox" id="num1" checked="true"/>
@@ -20,6 +27,7 @@
 	The Image associate with your Password: <img id="yourPwImage1" height="100" width= "100" />
 	
 	<h2>Shopping</h2>
+	<div id="ImageUnderHeader"><img src="shopping.png" border="0" height="100" width="300"></div>
 
 	How many characters? <input type="number" id="charNum" value="3" min="8" max="100" /><br />
 	Number: <input type="checkbox" id="num2" checked="true"/>
@@ -29,6 +37,7 @@
     The Image associate with your Password: <img id="yourPwImage2" height="100" width= "100" />
 	
 	<h2>Email</h2>
+	<div id="ImageUnderHeader"><img src="email.png" border="0" height="100" width="300"></div>
 
 	How many characters? <input type="number" id="charNum" value="3" min="8" max="100" /><br />
 	Number: <input type="checkbox" id="num3" checked="true"/>
@@ -43,6 +52,7 @@
 			<img src="man.gif" alt="man" height="150" width="150" /> 
 			<img src="dog.gif" alt="dog" height="150" width="150" /> 
 			<img src="car.gif" alt="car" height="150" width="150" /> 
+			<br>
 			<img src="woman.gif" alt="woman" height="150" width="150" /> 
 			<img src="ball.gif" alt="ball" height="150" width="150" /> 
 			<img src="apple.gif" alt="apple" height="150" width="150" /> 
@@ -53,7 +63,6 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.js"></script>
 	<script src="password.js"></script>
 	<link rel="stylesheet" type = "text/css" href="style.css" />
-	<link rel="stylesheet" type = "style/css" href="code.css" />
 </body>
-
+</div>
 </html>

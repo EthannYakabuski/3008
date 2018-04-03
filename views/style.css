@@ -1,0 +1,113 @@
+#submit1 {
+
+background #e7e7e7;
+border: 1px solid;
+border-radius: 3px;
+font: 700 13px Helvetica, Arial;
+height: 30px;
+line-height: 28px;
+padding: 0 20px;
+text-align: center;
+margin-right: 10px;
+box-sizing: border-box;
+}
+#submit2 {
+
+background #e7e7e7;
+border: 1px solid;
+border-radius: 3px;
+font: 700 13px Helvetica, Arial;
+height: 30px;
+line-height: 28px;
+padding: 0 20px;
+text-align: center;
+margin-right: 10px;
+box-sizing: border-box;
+}
+#submit3 {
+
+background #e7e7e7;
+border: 1px solid;
+border-radius: 3px;
+font: 700 13px Helvetica, Arial;
+height: 30px;
+line-height: 28px;
+padding: 0 20px;
+text-align: center;
+margin-right: 10px;
+box-sizing: border-box;
+}
+
+#test {
+
+background #e7e7e7;
+border: 1px solid;
+border-radius: 3px;
+font: 700 13px Helvetica, Arial;
+height: 30px;
+line-height: 28px;
+padding: 0 20px;
+text-align: center;
+margin-right: 10px;
+box-sizing: border-box;
+}
+#Logo {
+    width: 80px;
+    float: left;
+}
+
+body {
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 14px;
+    background: #222222;
+}
+
+div {
+    display: block;
+}
+
+
+#header {
+    width: 800px;
+    height: 70px;
+    float: left;
+    margin: 0 40px 20px 40px;
+    text-align: left;
+    padding: 10px 10px 3px 10px;
+    font-size: 28px;
+    border-bottom: 1px solid #dfdfdf;
+}
+
+img[src="banking.png"] {
+    border-radius: 8px;
+}
+
+img[src="shopping.png"] {
+    border-radius: 8px;
+}
+
+img[src="email.png"] {
+    border-radius: 8px;
+}
+
+.photos {
+	width: 700px;
+    margin: 15px auto;
+	text-align: center;
+    padding: 50px 30px 10px 30px;
+    background: #285894;
+    line-height: 23px;
+    border: 1px solid #dfdfdf;
+    border-radius: 10px 10px;
+    overflow: hidden;
+}
+.container {
+    width: 900px;
+    margin: 15px auto;
+    padding: 50px 30px 10px 30px;
+    background: #ffffff;
+    line-height: 23px;
+    border: 1px solid #dfdfdf;
+    border-radius: 10px 10px;
+    overflow: hidden;
+}
