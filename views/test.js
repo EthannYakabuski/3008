@@ -5,9 +5,9 @@ var emailImageNum;
 var pictures = ["Man", "Dog", "Car", "Woman", "Ball", "Apple"];
 var picturesSize = 6;
 
-var bankButton = document.getElementById("bankButton");
-var shoppingButton = document.getElementById("shoppingButton");
-var emailButton = document.getElementById("emailButton");
+var bankButton = document.getElementById("submit1");
+var shoppingButton = document.getElementById("submit2");
+var emailButton = document.getElementById("submit3");
 
 var yourPw1 = document.getElementById("yourPw1");
 var yourPw2 = document.getElementById("yourPw2");
