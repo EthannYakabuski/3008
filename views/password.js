@@ -32,7 +32,10 @@ var yourPwImage2 = document.getElementById("yourPwImage2");
 var yourPwImage3 = document.getElementById("yourPwImage3");
 
 
+//submit button listeners: 
 
+//these event listeners do NO network traffic, they only set the 
+//appropriate values for when the final submit passwords button is clicked
 submit1.addEventListener("click",function(e){
     var characters = char;
     (numBox1.checked) ? characters += num1 : '';
@@ -63,6 +66,8 @@ test.addEventListener("click", function(e) {
 	 
 });
 
+//this is where the network traffic is done to send the password information to the server to 
+//store in the database
 function sendData() {
 	console.log("Sending password data"); 
 
@@ -75,7 +80,7 @@ function sendData() {
 	console.log( yourPw3.value );
 	console.log( yourPwImage3.src );
 
-	
+	//building the password data object to send to server
 	//get the passwords from the page
 	var userData = {
 		pass1: yourPw1.value,
@@ -91,6 +96,7 @@ function sendData() {
 	}
 	
 	
+	//send the password information to the server, and then runs function to load the testing page
 	$.post("/submit", userData, 
 	function(data) {
 		console.log("response received, password data saved to database");
@@ -111,6 +117,7 @@ function sendData() {
 	
 }
 
+//loads the testing passwords page, called after the final submit passwords button is clicked
 function loadTestPage() {
 	
 	console.log("In loadTestPage() ");
@@ -134,7 +141,7 @@ function loadTestPage() {
 
 }
 
-
+//function used to build the randomly generated password
 function password(l,characters){
 	var pwd = '';
     for(var i = 0; i<l; i++){

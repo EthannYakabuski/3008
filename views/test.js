@@ -50,7 +50,7 @@ var bankTime = 0;
 var shoppingTime = 0; 
 var emailTime = 0; 
 
-
+//button event listeners for handling the border lighting of the chosen picture
 
 manBankImage.addEventListener("click", function(e) {
 	manBankImage.style.border = "thick solid #0000FF"; 
@@ -231,7 +231,9 @@ var myEmailInt = setInterval(function() {
 }, 1000);
 
 	
-
+//this button listener is for the bank password checking
+//it builds a data object storing the attempted password information and
+//send it to the server to check for accuracy
 bankButton.addEventListener("click", function(e) {
 	//create data object to send to server to check to see if password is correct
 	
@@ -272,6 +274,9 @@ bankButton.addEventListener("click", function(e) {
 	  console.log("This password attempt is being sent to the server:"); 
 	  console.log(userData);
 	
+	
+	  //send the data object containing the password attempt information to the server
+	  //to check for accuracy
 	  $.post("/passAttempt",userData, 
 	  function(data) {
 		  console.log("response received Bank password checked"); 
@@ -286,6 +291,9 @@ bankButton.addEventListener("click", function(e) {
 	
 });
 
+//this button listener is for the shopping password checking
+//it builds a data object storing the attempted password information and
+//send it to the server to check for accuracy
 shoppingButton.addEventListener("click", function(e) {
 	//create data object to send to server to check to see if password is correct
 	
@@ -325,6 +333,7 @@ shoppingButton.addEventListener("click", function(e) {
 	  console.log("This password attempt is being sent to the server:"); 
 	  console.log(userData);
 	
+	  //send the password attempt in data object to check with server for accuracy
 	  $.post("/passAttempt",userData, 
 	  function(data) {
 		  console.log("response received shopping password checked"); 
@@ -332,6 +341,9 @@ shoppingButton.addEventListener("click", function(e) {
 	}
   });
 
+//this button listener is for the email password checking
+//it builds a data object storing the attempted password information and
+//send it to the server to check for accuracy
 emailButton.addEventListener("click", function(e) {
 	//create data object to send to server to check to see if password is correct
 	
@@ -372,6 +384,7 @@ emailButton.addEventListener("click", function(e) {
 	  console.log("This password attempt is being sent to the server:"); 
 	  console.log(userData);
 	
+	  //send the data object to the server to check for accuracy
 	  $.post("/passAttempt",userData, 
 	  function(data) {
 		  console.log("response received email password checked"); 

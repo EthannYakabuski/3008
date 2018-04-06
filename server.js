@@ -42,13 +42,13 @@ mongo.connect("mongodb://localhost:27017/3008DB", function(err, database) {
 */
 
 
-
+//all requests pass through here to log request information to console
 app.use(function(req, res, next) {
 	console.log(req.method + " request for " + req.url); 
     next();
 }); 
 
-
+//this route is for saving the participants password data to the database
 app.use('/submit', bodyParser.urlencoded({extended:true}));
 app.post('/submit', function(req, res) {
 
@@ -72,6 +72,7 @@ app.post('/submit', function(req, res) {
 				console.log(req.body);
 				
 			
+			    //submit the password information for this participant to the database
 			    dbo.collection("passwords").insertOne(req.body, function(err, res) {
 					if (err) throw err;
 					console.log("Document inserted");
@@ -88,6 +89,8 @@ app.post('/submit', function(req, res) {
 	}	
 });
 
+
+//this route is used everytime a participant attempts to enter one of their passwords on the test page
 app.use('/passAttempt', bodyParser.urlencoded({extended:true}));
 app.post('/passAttempt', function(req, res) {
 	
@@ -132,7 +135,7 @@ app.post('/passAttempt', function(req, res) {
 		console.log("Picture String:" + pictureString);
 
 		
-		
+		//if they are attempting a bank password
 		if (req.body.passwordType == "bank") {
 			
 			
@@ -185,7 +188,7 @@ app.post('/passAttempt', function(req, res) {
 			
 		    
 		  
-		 
+		 //if they are attempting a shopping password
 		} else if (req.body.passwordType == "shopping") {
 			
 		  var collection = dbo.collection("passwords");
@@ -233,6 +236,7 @@ app.post('/passAttempt', function(req, res) {
 			  database.close();
 		  });
 		
+		//if they are attempting an email password
 		} else {
 			
 		
@@ -293,7 +297,7 @@ app.post('/passAttempt', function(req, res) {
 });
 
 
-
+//this route loads the testing password page
 app.get('/test', function(req, res) {
 	
 	console.log("loading the test page");
@@ -301,7 +305,7 @@ app.get('/test', function(req, res) {
 	res.render('test', {});
 });
 
-
+//this route is for getting the home page where participants choose their passwords
 app.get(['/', '/index.html', '/home', '/index/'], function(req, res) {
 
 	res.render('index', {}); 
